@@ -3,7 +3,6 @@ from pytube import YouTube
 import yt_dlp
 from colorama import init, Fore, Style
 
-# Inicializa a colorama
 init()
 
 def print_purple(text):
@@ -21,7 +20,7 @@ def load_directory():
         return None
 
 def clear_screen():
-    # Limpa a tela baseado no sistema operacional
+    
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def download_youtube_video(url, directory):
@@ -38,8 +37,8 @@ def download_twitter_video(url, directory):
         ydl_opts = {
             'format': 'best[ext=mp4]',
             'outtmpl': os.path.join(directory, '%(title)s.%(ext)s'),
-            'quiet': True,  # Evita mensagens de aviso
-            'no_warnings': True  # Evita todas as mensagens de aviso
+            'quiet': True,  
+            'no_warnings': True 
         }
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             ydl.download([url])
@@ -56,9 +55,9 @@ def download_tiktok_video(url, directory):
                 'key': 'FFmpegVideoRemuxer',
                 'preferedformat': 'mp4',
             }],
-            'ffmpeg_location': '/path/to/ffmpeg',  # Update this path if needed
-            'quiet': True,  # Evita mensagens de aviso
-            'no_warnings': True  # Evita todas as mensagens de aviso
+            'ffmpeg_location': '/path/to/ffmpeg',  
+            'quiet': True,  
+            'no_warnings': True  
         }
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             ydl.download([url])
@@ -99,8 +98,8 @@ def main():
     """
 
     while True:
-        clear_screen()  # Limpa a tela a cada iteração
-        print_purple(ascii_art)  # Exibe a ASCII art novamente
+        clear_screen()  
+        print_purple(ascii_art)  
 
         url = input(Fore.MAGENTA + "Insira a URL (ou digite 'sair' para encerrar): " + Style.RESET_ALL)
         if url.lower() == 'sair':
